@@ -5,7 +5,7 @@ chrome.browserAction.onClicked.addListener(() => {
             const episode = res.episode;
 
             chrome.tabs.create({
-                url: "https://ww4.gogoanime.io/naruto-shippuden-episode-" + episode
+                url: "https://gogoanime.io/naruto-shippuden-episode-" + episode
             });
         })
         .catch(err => {
@@ -17,7 +17,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === 'complete') {
         const url = tab.url;
 
-        if (url.match(/^https:\/\/ww4\.gogoanime\.io\/naruto-shippuden-episode-[0-9]+$/)) {
+        if (url.match(/^https:\/\/.*\.gogoanime\.io\/naruto-shippuden-episode-[0-9]+$/)) {
             const episode = parseInt(url.split("naruto-shippuden-episode-")[1]);
 
             let headers = new Headers();
